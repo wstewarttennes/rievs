@@ -1,288 +1,281 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rhode Island Electric Vehicle Conversions</title>
 <meta name="description" content="Gas to electric conversions, build consulting, and parts sourcing. Based in Rhode Island.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    /* Narragansett Bay palette */
-    --sand:#f7f4ed; --sand-2:#efe9dc; --paper:#ffffff;
-    --line:#ddd4c3; --line-soft:#e9e2d5;
-    --ink:#12293f;            /* deep navy */
-    --deep:#0e2236;           /* darker navy surfaces */
-    --muted:#57697c;
-    --sea:#1c6e78;            /* weathered teal */
-    --sea-dk:#155159;
-    --gold:#c08a2b;           /* RI state flag gold */
-    --max:1080px;
+    --paper:#f1ede3;
+    --paper-2:#e8e3d6;
+    --ink:#14181b;
+    --ink-2:#4b5257;
+    --rule:#c6bfae;
+    --rule-hard:#14181b;
+    --oxide:#9d3b2c;        /* figure numbers, section marks */
+    --navy:#16324a;         /* bay, plates, footer */
+    --max:1140px;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{
-    margin:0; background:var(--sand); color:var(--ink);
-    font:16px/1.65 ui-sans-serif,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+    margin:0; background:var(--paper); color:var(--ink);
+    font:16px/1.6 "IBM Plex Sans",ui-sans-serif,-apple-system,Helvetica,Arial,sans-serif;
     -webkit-font-smoothing:antialiased;
   }
-  a{color:var(--sea)}
-  .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
-  h1,h2,h3{line-height:1.15; letter-spacing:-.02em; margin:0}
-  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  a{color:var(--oxide)}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 24px}
+  h1,h2,h3{font-family:"IBM Plex Sans Condensed",Impact,sans-serif; font-weight:700;
+    line-height:1.05; margin:0; text-transform:uppercase; letter-spacing:.005em}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace}
 
-  /* nav */
-  header{position:sticky; top:0; z-index:10; background:rgba(247,244,237,.92);
-    backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
-  nav{display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:64px; padding:8px 0}
-  .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:-.015em;
-    text-decoration:none; color:var(--ink); font-size:15px; line-height:1.15}
-  @media(max-width:420px){ .brand{font-size:13px} }
-  .plug{width:22px;height:22px;flex:none; color:var(--sea)}
-  nav ul{display:flex; gap:22px; list-style:none; margin:0; padding:0}
-  nav a{color:var(--muted); text-decoration:none; font-size:14px}
-  nav a:hover{color:var(--ink)}
-  @media(max-width:1040px){ nav ul{display:none} }
+  /* ---------- top bar ---------- */
+  .topbar{border-bottom:1px solid var(--rule-hard); background:var(--paper)}
+  .topbar .wrap{display:flex; justify-content:space-between; align-items:baseline;
+    gap:16px; padding-block:9px; flex-wrap:wrap}
+  .topbar span{font-family:"IBM Plex Mono",monospace; font-size:11px; font-weight:500;
+    letter-spacing:.13em; text-transform:uppercase}
+  .topbar .right{color:var(--ink-2)}
 
-  /* hero over the bay */
-  .hero{position:relative; overflow:hidden; background:var(--deep); color:#eef3f6;
-    border-bottom:1px solid var(--line)}
-  .hero-bg{position:absolute; inset:0; z-index:0}
-  .hero-bg svg, .hero-bg img{width:100%; height:100%; object-fit:cover; display:block}
-  .hero-bg img{position:absolute; inset:0}
-  .hero::after{content:""; position:absolute; inset:0; z-index:1;
-    background:linear-gradient(100deg, rgba(9,23,37,.92) 0%, rgba(9,23,37,.78) 45%, rgba(9,23,37,.35) 100%)}
-  .hero .wrap{position:relative; z-index:2; padding-block:88px 76px}
-  .eyebrow{color:var(--gold); font-size:13px; letter-spacing:.16em; text-transform:uppercase; font-weight:700}
-  .hero h1{font-size:clamp(34px,6vw,58px); margin:14px 0 18px; max-width:15ch; color:#fff}
-  .hero p{color:#c8d5df; font-size:clamp(17px,2.2vw,20px); max-width:58ch; margin:0 0 28px}
-  .cta{display:flex; gap:12px; flex-wrap:wrap}
-  .btn{display:inline-block; padding:12px 22px; border-radius:6px; font-weight:600;
-    text-decoration:none; font-size:15px; border:1px solid transparent}
-  .btn-a{background:var(--sea); color:#fff}
-  .btn-a:hover{background:var(--sea-dk)}
-  .btn-b{border-color:rgba(255,255,255,.35); color:#eef3f6}
-  .btn-b:hover{border-color:#fff}
-  header .btn-a{color:#fff}
+  /* ---------- nav rail ---------- */
+  .navrail{border-bottom:3px double var(--rule-hard); background:var(--paper)}
+  .navrail .wrap{display:flex; gap:0; flex-wrap:wrap; padding-block:0}
+  .navrail a{font-family:"IBM Plex Mono",monospace; font-size:11.5px; letter-spacing:.11em;
+    text-transform:uppercase; text-decoration:none; color:var(--ink); padding:10px 16px 10px 0;
+    margin-right:16px; border-right:1px solid var(--rule)}
+  .navrail a:last-child{border-right:none; margin-right:0}
+  .navrail a:hover{color:var(--oxide)}
+  @media(max-width:640px){ .navrail a{padding-right:10px; margin-right:10px; font-size:10.5px} }
 
-  /* sections */
-  section{padding:76px 0; border-bottom:1px solid var(--line-soft)}
-  section:nth-of-type(even){background:var(--sand-2)}
-  .kicker{color:var(--sea); font-size:13px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; margin-bottom:12px}
-  section h2{font-size:clamp(26px,3.6vw,36px); margin-bottom:14px}
-  .lede{color:var(--muted); max-width:62ch; margin:0 0 36px}
+  /* ---------- masthead ---------- */
+  .masthead{position:relative; border-bottom:1px solid var(--rule-hard);
+    background:var(--navy); min-height:min(78vh,720px); display:flex; align-items:flex-end}
+  .masthead-photo{position:absolute; inset:0; overflow:hidden}
+  .masthead-photo img{width:100%; height:100%; object-fit:cover; display:block;
+    filter:saturate(.9) contrast(1.04)}
+  .masthead::after{content:""; position:absolute; inset:0;
+    background:linear-gradient(to top, rgba(12,18,24,.94) 0%, rgba(12,18,24,.62) 38%, rgba(12,18,24,.18) 72%, rgba(12,18,24,.30) 100%)}
+  .masthead .wrap{position:relative; z-index:2; padding-block:0 44px; width:100%}
+  .plate{border:1px solid rgba(241,237,227,.55); border-left-width:4px;
+    padding:26px 28px 28px; max-width:720px; background:rgba(12,18,24,.34)}
+  .plate .stamp{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.16em;
+    text-transform:uppercase; color:#e6b88a; display:block; margin-bottom:14px}
+  .masthead h1{font-size:clamp(38px,7.4vw,76px); color:#fbf8f1; margin-bottom:16px}
+  .masthead p{color:#d3d9de; font-size:clamp(15.5px,1.7vw,18px); max-width:52ch; margin:0 0 22px}
+  .cta{display:flex; gap:0; flex-wrap:wrap}
+  .btn{font-family:"IBM Plex Mono",monospace; font-size:12px; letter-spacing:.12em;
+    text-transform:uppercase; text-decoration:none; padding:13px 22px; border:1px solid #fbf8f1;
+    display:inline-block}
+  .btn-a{background:#fbf8f1; color:var(--ink)}
+  .btn-a:hover{background:var(--oxide); border-color:var(--oxide); color:#fbf8f1}
+  .btn-b{color:#fbf8f1; border-left:none}
+  .btn-b:hover{background:rgba(251,248,241,.14)}
+  @media(max-width:520px){ .btn-b{border-left:1px solid #fbf8f1} }
 
-  /* services */
-  .grid{display:grid; gap:18px; grid-template-columns:repeat(3,1fr)}
-  @media(max-width:860px){ .grid{grid-template-columns:1fr} }
-  .card{background:var(--paper); border:1px solid var(--line); border-radius:10px; padding:26px;
-    box-shadow:0 1px 2px rgba(18,41,63,.04)}
-  .card h3{font-size:19px; margin-bottom:10px}
-  .card p{color:var(--muted); font-size:15px; margin:0 0 14px}
-  .card ul{color:var(--muted); font-size:14px; margin:0; padding-left:18px}
-  .card li{margin-bottom:5px}
-  .num{color:var(--gold); font-size:13px; font-weight:800; letter-spacing:.1em; display:block; margin-bottom:14px}
+  /* ---------- sections ---------- */
+  section{padding:64px 0; border-bottom:1px solid var(--rule)}
+  .sec-head{display:flex; align-items:baseline; gap:16px; margin-bottom:10px}
+  .sec-no{font-family:"IBM Plex Mono",monospace; font-size:11.5px; font-weight:600;
+    letter-spacing:.14em; color:var(--oxide); white-space:nowrap}
+  .sec-head h2{font-size:clamp(24px,3.3vw,34px)}
+  .sec-head .fill{flex:1; height:1px; background:var(--rule-hard); align-self:center}
+  .lede{color:var(--ink-2); max-width:64ch; margin:0 0 34px; font-size:15.5px}
 
-  /* build */
-  .build-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:40px; align-items:start}
-  @media(max-width:860px){ .build-grid{grid-template-columns:1fr; gap:28px} }
-  .photo{background:var(--sand-2); border:1px solid var(--line); border-radius:10px;
-    aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; text-align:center;
-    color:#93897a; font-size:13px; padding:20px; overflow:hidden}
-  .photo img{width:100%; height:100%; object-fit:cover; display:block}
-  .photo.filled{padding:0}
-  .hero-shot{aspect-ratio:3/4}
-  .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
-  @media(max-width:860px){ .gallery{grid-template-columns:1fr 1fr} }
-  @media(max-width:520px){ .gallery{grid-template-columns:1fr} }
-  .gallery figure{cursor:zoom-in}
-  .gallery .photo{aspect-ratio:4/3; font-size:12px; transition:border-color .15s, box-shadow .15s}
-  .gallery figure:hover .photo{border-color:var(--sea); box-shadow:0 3px 10px rgba(18,41,63,.10)}
-  figure{margin:0}
-  figcaption{color:var(--muted); font-size:13px; margin-top:8px}
-  .specs{width:100%; border-collapse:collapse; font-size:14.5px}
-  .specs td{padding:11px 0; border-bottom:1px solid var(--line); vertical-align:top}
-  .specs td:first-child{color:var(--muted); width:44%; padding-right:16px}
-  .status{margin-top:24px; background:var(--paper); border:1px solid var(--line);
-    border-left:3px solid var(--gold); border-radius:0 8px 8px 0; padding:16px 18px;
-    font-size:14.5px; color:var(--muted)}
-  .status strong{color:var(--ink)}
+  /* ---------- numbered list rows (services, process) ---------- */
+  .rows{border-top:1px solid var(--rule-hard)}
+  .row{display:grid; grid-template-columns:88px 1fr 1.05fr; gap:26px;
+    padding:24px 0; border-bottom:1px solid var(--rule); align-items:start}
+  @media(max-width:800px){ .row{grid-template-columns:62px 1fr; gap:18px}
+    .row .row-detail{grid-column:2} }
+  .row-no{font-family:"IBM Plex Mono",monospace; font-size:13px; font-weight:600; color:var(--oxide);
+    padding-top:3px}
+  .row h3{font-size:20px; margin-bottom:8px}
+  .row p{color:var(--ink-2); font-size:15px; margin:0}
+  .row ul{margin:0; padding:0; list-style:none}
+  .row li{font-family:"IBM Plex Mono",monospace; font-size:12.5px; color:var(--ink-2);
+    padding:5px 0; border-bottom:1px dotted var(--rule)}
+  .row li:last-child{border-bottom:none}
 
-  /* process */
-  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:18px}
-  @media(max-width:860px){ .steps{grid-template-columns:1fr 1fr} }
-  @media(max-width:480px){ .steps{grid-template-columns:1fr} }
-  .step{border-top:2px solid var(--sea); padding-top:16px}
-  .step b{display:block; font-size:15px; margin-bottom:6px}
-  .step span{color:var(--muted); font-size:14px}
+  /* ---------- build / spec sheet ---------- */
+  .build-grid{display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--rule-hard)}
+  @media(max-width:800px){ .build-grid{grid-template-columns:1fr} }
+  .build-fig{border-right:1px solid var(--rule-hard); background:var(--paper-2)}
+  @media(max-width:800px){ .build-fig{border-right:none; border-bottom:1px solid var(--rule-hard)} }
+  .build-fig .frame{aspect-ratio:4/5; overflow:hidden; display:flex; align-items:center;
+    justify-content:center; color:#8c8474; font-family:"IBM Plex Mono",monospace; font-size:12px}
+  .build-fig img{width:100%; height:100%; object-fit:cover; display:block}
+  .build-fig .cap{border-top:1px solid var(--rule-hard); padding:10px 16px;
+    font-family:"IBM Plex Mono",monospace; font-size:11.5px; color:var(--ink-2)}
+  .build-data{padding:24px 26px}
+  .specs{width:100%; border-collapse:collapse; font-size:14px}
+  .specs td{padding:9px 0; border-bottom:1px dotted var(--rule); vertical-align:top}
+  .specs td:first-child{font-family:"IBM Plex Mono",monospace; font-size:11.5px;
+    letter-spacing:.09em; text-transform:uppercase; color:var(--ink-2); width:46%; padding-right:14px}
+  .status{margin-top:22px; border:1px solid var(--rule-hard); border-left:4px solid var(--oxide);
+    padding:14px 16px; font-size:14px; color:var(--ink-2); background:var(--paper-2)}
+  .status b{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--ink); display:block; margin-bottom:6px}
+  .repo-note{margin-top:20px; font-size:14px; color:var(--ink-2)}
 
-  /* faq */
-  details{border-bottom:1px solid var(--line); padding:18px 0}
-  summary{cursor:pointer; font-weight:600; font-size:16.5px; list-style:none}
+  /* ---------- plates (gallery) ---------- */
+  .gallery{display:grid; grid-template-columns:1fr 1fr; gap:28px}
+  @media(max-width:700px){ .gallery{grid-template-columns:1fr} }
+  .gallery figure{margin:0; cursor:zoom-in}
+  .gallery .frame{border:1px solid var(--rule-hard); background:var(--paper-2);
+    aspect-ratio:4/3; overflow:hidden; display:flex; align-items:center; justify-content:center;
+    color:#8c8474; font-family:"IBM Plex Mono",monospace; font-size:12px}
+  .gallery img{width:100%; height:100%; object-fit:cover; display:block}
+  .gallery figure:hover .frame{border-color:var(--oxide)}
+  .gallery figcaption{font-family:"IBM Plex Mono",monospace; font-size:11.5px; line-height:1.55;
+    color:var(--ink-2); padding-top:9px}
+  .gallery .fig-no{color:var(--oxide); font-weight:600}
+  .gallery figure.tall{grid-row:span 1}
+
+  /* ---------- faq ---------- */
+  .faq{border-top:1px solid var(--rule-hard)}
+  details{border-bottom:1px solid var(--rule); padding:0}
+  summary{cursor:pointer; list-style:none; display:grid; grid-template-columns:72px 1fr;
+    gap:20px; padding:18px 0; font-weight:600; font-size:16px; align-items:baseline}
+  @media(max-width:800px){ summary{grid-template-columns:52px 1fr; gap:14px} }
   summary::-webkit-details-marker{display:none}
-  summary::after{content:"+"; float:right; color:var(--sea); font-weight:400}
-  details[open] summary::after{content:"\2013"}
-  details p{color:var(--muted); margin:12px 0 0; max-width:66ch; font-size:15px}
-  details ul{color:var(--muted); font-size:15px; max-width:66ch; margin:12px 0 0; padding-left:20px}
-  details li{margin-bottom:8px}
-  details li b{color:var(--ink); font-weight:600}
+  summary .q{font-family:"IBM Plex Mono",monospace; font-size:12px; font-weight:600; color:var(--oxide)}
+  details[open] summary{border-bottom:1px dotted var(--rule)}
+  .answer{padding:16px 0 22px 92px; color:var(--ink-2); font-size:15px}
+  @media(max-width:800px){ .answer{padding-left:66px} }
+  .answer p{margin:0 0 12px; max-width:66ch}
+  .answer p:last-child{margin-bottom:0}
+  .answer ul{margin:0 0 12px; padding-left:18px; max-width:66ch}
+  .answer li{margin-bottom:8px}
+  .answer li b{color:var(--ink)}
 
-  /* contact */
-  #contact{background:var(--deep); color:#eef3f6; border-bottom:none}
-  #contact h2{color:#fff}
-  #contact .kicker{color:var(--gold)}
-  .contact-box{max-width:620px}
-  .contact-box p{color:#c8d5df}
-  .mailbtn{font-size:clamp(20px,3.4vw,28px); font-weight:700; color:#8fd3d8; text-decoration:none; word-break:break-all}
-  .mailbtn:hover{text-decoration:underline}
+  /* ---------- contact ---------- */
+  #contact{background:var(--navy); border-bottom:none; color:#eaeef2}
+  #contact .sec-head h2{color:#fff}
+  #contact .sec-no{color:#e6b88a}
+  #contact .sec-head .fill{background:rgba(234,238,242,.4)}
+  #contact .lede{color:#c2ccd4}
+  .mailplate{border:1px solid rgba(234,238,242,.5); border-left-width:4px; padding:22px 24px;
+    max-width:620px}
+  .mailplate .stamp{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.14em;
+    text-transform:uppercase; color:#e6b88a; display:block; margin-bottom:10px}
+  .mailplate a{font-family:"IBM Plex Sans Condensed",sans-serif; font-weight:700;
+    font-size:clamp(24px,4vw,36px); color:#fff; text-decoration:none; word-break:break-all}
+  .mailplate a:hover{color:#e6b88a}
 
-  footer{padding:34px 0; color:var(--muted); font-size:13.5px;
-    display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap}
+  /* ---------- colophon ---------- */
+  footer{background:var(--navy); color:#8c9aa6; border-top:1px solid rgba(234,238,242,.22)}
+  footer .wrap{display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
+    padding-block:22px; font-family:"IBM Plex Mono",monospace; font-size:11px;
+    letter-spacing:.1em; text-transform:uppercase}
 
-  /* lightbox */
-  .lightbox{position:fixed; inset:0; z-index:50; background:rgba(9,23,37,.95);
-    display:none; align-items:center; justify-content:center; padding:24px; cursor:zoom-out}
+  /* ---------- lightbox ---------- */
+  .lightbox{position:fixed; inset:0; z-index:50; background:rgba(12,18,24,.96);
+    display:none; align-items:center; justify-content:center; padding:28px; cursor:zoom-out}
   .lightbox.open{display:flex}
-  .lightbox img{max-width:100%; max-height:82vh; border-radius:8px; display:block}
-  .lightbox figcaption{text-align:center; color:#c8d5df; margin-top:14px; font-size:14px}
-  .lb-close{position:absolute; top:16px; right:22px; color:#c8d5df; font-size:30px;
-    background:none; border:none; cursor:pointer; line-height:1}
+  .lightbox img{max-width:100%; max-height:82vh; display:block; border:1px solid rgba(241,237,227,.4)}
+  .lightbox figcaption{text-align:center; color:#c2ccd4; margin-top:14px;
+    font-family:"IBM Plex Mono",monospace; font-size:12px}
+  .lb-close{position:absolute; top:14px; right:20px; color:#c2ccd4; font-size:28px;
+    background:none; border:none; cursor:pointer; line-height:1; font-family:"IBM Plex Mono",monospace}
   .lb-close:hover{color:#fff}
 </style>
-</head>
-<body>
 
-<header>
+<div class="topbar">
   <div class="wrap">
-    <nav>
-      <a class="brand" href="#top">
-        <svg class="plug" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="12" cy="3.6" r="2"/>
-          <path d="M12 5.6v15M8 9h8M4.2 14.6a7.8 7.8 0 0 0 15.6 0M3.6 13.4l.6 1.2 1.3-.5M20.4 13.4l-.6 1.2-1.3-.5"/>
-        </svg>
-        <span>Rhode Island Electric Vehicle Conversions</span>
-      </a>
-      <ul>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#build">The Ranger</a></li>
-        <li><a href="#gallery">Photos</a></li>
-        <li><a href="#process">Process</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <a class="btn btn-a" href="#contact" style="padding:9px 16px;font-size:14px">Get in touch</a>
-    </nav>
-  </div>
-</header>
-
-<div id="top" class="hero">
-  <div class="hero-bg" aria-hidden="true">
-    <svg viewBox="0 0 1440 560" preserveAspectRatio="xMidYMid slice">
-      <defs>
-        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#16354f"/>
-          <stop offset="55%" stop-color="#27607a"/>
-          <stop offset="100%" stop-color="#c98f52"/>
-        </linearGradient>
-        <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#20495f"/>
-          <stop offset="100%" stop-color="#0d2335"/>
-        </linearGradient>
-      </defs>
-      <rect width="1440" height="560" fill="url(#sky)"/>
-      <circle cx="1120" cy="330" r="26" fill="#f0c98a" opacity=".85"/>
-      <!-- far shoreline -->
-      <path d="M0 344 L240 338 L430 344 L700 336 L980 343 L1240 337 L1440 344 L1440 360 L0 360 Z" fill="#132c42" opacity=".9"/>
-      <!-- suspension bridge across the bay -->
-      <g stroke="#0f2739" fill="none" stroke-width="3" opacity=".95">
-        <path d="M0 322 Q170 268 340 322" />
-        <path d="M340 322 Q510 268 680 322" />
-        <line x1="340" y1="248" x2="340" y2="344"/>
-        <line x1="0" y1="322" x2="680" y2="322" stroke-width="4"/>
-        <line x1="680" y1="300" x2="680" y2="344" stroke-width="2.5"/>
-      </g>
-      <g stroke="#0f2739" stroke-width="1.4" opacity=".8">
-        <line x1="80" y1="300" x2="80" y2="322"/><line x1="150" y1="286" x2="150" y2="322"/>
-        <line x1="220" y1="288" x2="220" y2="322"/><line x1="290" y1="302" x2="290" y2="322"/>
-        <line x1="410" y1="302" x2="410" y2="322"/><line x1="480" y1="288" x2="480" y2="322"/>
-        <line x1="550" y1="286" x2="550" y2="322"/><line x1="620" y1="300" x2="620" y2="322"/>
-      </g>
-      <!-- sailboat -->
-      <g fill="#0f2739" opacity=".9">
-        <path d="M1015 338 l0 -46 28 46 z"/><path d="M1009 338 l-20 -34 18 0 z"/>
-        <path d="M980 340 h56 l-9 10 h-38 z"/>
-      </g>
-      <!-- water -->
-      <rect y="360" width="1440" height="200" fill="url(#sea)"/>
-      <g stroke="#3a7186" stroke-width="2" opacity=".45" stroke-linecap="round">
-        <line x1="60" y1="392" x2="190" y2="392"/><line x1="250" y1="416" x2="430" y2="416"/>
-        <line x1="520" y1="386" x2="640" y2="386"/><line x1="700" y1="440" x2="900" y2="440"/>
-        <line x1="960" y1="400" x2="1090" y2="400"/><line x1="1160" y1="428" x2="1340" y2="428"/>
-        <line x1="300" y1="470" x2="520" y2="470"/><line x1="820" y1="492" x2="1020" y2="492"/>
-        <line x1="120" y1="520" x2="360" y2="520"/><line x1="1080" y1="512" x2="1300" y2="512"/>
-      </g>
-      <g stroke="#f0c98a" stroke-width="2" opacity=".3" stroke-linecap="round">
-        <line x1="1090" y1="374" x2="1150" y2="374"/><line x1="1100" y1="392" x2="1170" y2="392"/>
-        <line x1="1085" y1="412" x2="1145" y2="412"/>
-      </g>
-    </svg>
-    <img src="img/narragansett.jpg" alt="">
-  </div>
-  <div class="wrap">
-    <div class="eyebrow">The Ocean State &middot; Est. in a driveway</div>
-    <h1>Keep the truck. Lose the engine.</h1>
-    <p>Electric conversions for the vehicles people actually want to keep driving —
-       old pickups, project cars, work vehicles. Full builds, help with your own build,
-       or just the parts.</p>
-    <div class="cta">
-      <a class="btn btn-a" href="#contact">Talk about your vehicle</a>
-      <a class="btn btn-b" href="#build">See the build</a>
-    </div>
+    <span>Rhode Island Electric Vehicle Conversions</span>
+    <span class="right">Rievs.com &nbsp;&mdash;&nbsp; The Ocean State</span>
   </div>
 </div>
 
+<nav class="navrail">
+  <div class="wrap">
+    <a href="#services">01 &middot; Services</a>
+    <a href="#build">02 &middot; The Ranger</a>
+    <a href="#gallery">03 &middot; Plates</a>
+    <a href="#process">04 &middot; Process</a>
+    <a href="#faq">05 &middot; Questions</a>
+    <a href="#contact">06 &middot; Contact</a>
+  </div>
+</nav>
+
+<header id="top" class="masthead">
+  <div class="masthead-photo">
+    <img id="masthead-img" src="img/finished.jpg" data-fallback="img/founder.jpg" alt="The converted 1986 Ford Ranger">
+  </div>
+  <div class="wrap">
+    <div class="plate">
+      <span class="stamp">Gas &rarr; Electric &nbsp;&middot;&nbsp; Rhode Island</span>
+      <h1>Keep the truck.<br>Lose the engine.</h1>
+      <p>Electric conversions for the vehicles people actually want to keep driving —
+         old pickups, project cars, work vehicles. Full builds, help with your own build,
+         or just the parts.</p>
+      <div class="cta">
+        <a class="btn btn-a" href="#contact">Talk about your vehicle</a>
+        <a class="btn btn-b" href="#build">See the build</a>
+      </div>
+    </div>
+  </div>
+</header>
+
 <section id="services">
   <div class="wrap">
-    <div class="kicker">What we do</div>
-    <h2>Three ways in</h2>
+    <div class="sec-head">
+      <span class="sec-no">SEC. 01</span>
+      <h2>Services</h2>
+      <span class="fill"></span>
+    </div>
     <p class="lede">Most people land somewhere on this spectrum — hand us the keys, or
       do it yourself and pull us in when the wiring stops making sense.</p>
-    <div class="grid">
-      <div class="card">
-        <span class="num">01</span>
-        <h3>Full conversion</h3>
-        <p>Drop the vehicle off, get it back electric. We handle the whole drivetrain.</p>
-        <ul>
-          <li>Motor, inverter, and mounts</li>
-          <li>Battery pack design and enclosure</li>
-          <li>BMS, contactors, HV safety</li>
-          <li>Onboard charging (J1772 / NACS)</li>
-          <li>12V system, gauges, dash integration</li>
-        </ul>
+
+    <div class="rows">
+      <div class="row">
+        <div class="row-no">1.1</div>
+        <div>
+          <h3>Full conversion</h3>
+          <p>Drop the vehicle off, get it back electric. We handle the whole drivetrain.</p>
+        </div>
+        <div class="row-detail">
+          <ul>
+            <li>Motor, inverter, and mounts</li>
+            <li>Battery pack design and enclosure</li>
+            <li>BMS, contactors, HV safety</li>
+            <li>Onboard charging (J1772 / NACS)</li>
+            <li>12V system, gauges, dash integration</li>
+          </ul>
+        </div>
       </div>
-      <div class="card">
-        <span class="num">02</span>
-        <h3>Build consulting</h3>
-        <p>You're doing the build. We help you not redo it twice.</p>
-        <ul>
-          <li>Component selection and sizing</li>
-          <li>Wiring diagrams and HV layout</li>
-          <li>CAN bus and BMS commissioning</li>
-          <li>Troubleshooting when it won't spin</li>
-          <li>Remote or in person, hourly</li>
-        </ul>
+
+      <div class="row">
+        <div class="row-no">1.2</div>
+        <div>
+          <h3>Build consulting</h3>
+          <p>You're doing the build. We help you not redo it twice.</p>
+        </div>
+        <div class="row-detail">
+          <ul>
+            <li>Component selection and sizing</li>
+            <li>Wiring diagrams and HV layout</li>
+            <li>CAN bus and BMS commissioning</li>
+            <li>Troubleshooting when it won't spin</li>
+            <li>Remote or in person, hourly</li>
+          </ul>
+        </div>
       </div>
-      <div class="card">
-        <span class="num">03</span>
-        <h3>Parts and kits</h3>
-        <p>Sourcing the pile of parts is half the project. We'll spec it out.</p>
-        <ul>
-          <li>Motors, inverters, chargers, DC-DC</li>
-          <li>Salvage and new battery modules</li>
-          <li>Charge ports and adapters</li>
-          <li>Harnesses and HV cable</li>
-          <li>A complete parts list for your vehicle</li>
-        </ul>
+
+      <div class="row">
+        <div class="row-no">1.3</div>
+        <div>
+          <h3>Parts and kits</h3>
+          <p>Sourcing the pile of parts is half the project. We'll spec it out.</p>
+        </div>
+        <div class="row-detail">
+          <ul>
+            <li>Motors, inverters, chargers, DC-DC</li>
+            <li>Salvage and new battery modules</li>
+            <li>Charge ports and adapters</li>
+            <li>Harnesses and HV cable</li>
+            <li>A complete parts list for your vehicle</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -290,27 +283,22 @@
 
 <section id="build">
   <div class="wrap">
-    <div class="kicker">The proof</div>
-    <h2>1986 Ford Ranger</h2>
+    <div class="sec-head">
+      <span class="sec-no">SEC. 02</span>
+      <h2>1986 Ford Ranger</h2>
+      <span class="fill"></span>
+    </div>
     <p class="lede">An in-progress, fully documented conversion. Nothing here is theory —
       the wiring notes, firmware, and CAN work are all from this truck.</p>
 
     <div class="build-grid">
-      <div>
-        <figure>
-          <div class="photo hero-shot" data-ph="img/ranger-hero.jpg">
-            <img src="img/ranger-hero.jpg" alt="The gas engine pulled out of the Ranger on an engine hoist">
-          </div>
-          <figcaption>The engine coming out. Everything after this is new.</figcaption>
-        </figure>
-        <div class="status">
-          <strong>Build status:</strong> HV pack and BMS commissioned, inverter bench-tested,
-          charging path wired. Currently working through the HV-side wiring and first drive.
-          This section will get build-log updates as it goes.
+      <div class="build-fig">
+        <div class="frame" data-ph="FIG. 00 — img/ranger-hero.jpg">
+          <img src="img/ranger-hero.jpg" alt="The gas engine pulled out of the Ranger on an engine hoist">
         </div>
+        <div class="cap"><b>FIG. 00</b> &nbsp;&mdash;&nbsp; Engine out. Everything after this is new.</div>
       </div>
-
-      <div>
+      <div class="build-data">
         <table class="specs">
           <tr><td>Motor</td><td>NetGain Hyper9 HV</td></tr>
           <tr><td>Inverter</td><td>Hyper-Drive X1, 120/144V 500A</td></tr>
@@ -321,7 +309,14 @@
           <tr><td>Instrumentation</td><td>Custom CAN dashboard (open source)</td></tr>
           <tr><td>Transmission</td><td>Original manual, retained</td></tr>
         </table>
-        <p class="lede" style="margin-top:22px; font-size:15px">
+
+        <div class="status">
+          <b>Build status</b>
+          HV pack and BMS commissioned, inverter bench-tested, charging path wired.
+          Currently working through the HV-side wiring and first drive.
+        </div>
+
+        <p class="repo-note">
           Every step is documented and open source — wiring references, CAN decoding, the
           openpilot port, and the dashboard that runs on the truck:
           <a href="https://github.com/wstewarttennes/ranger-ev">ranger-ev</a> and
@@ -334,37 +329,37 @@
 
 <section id="gallery">
   <div class="wrap">
-    <div class="kicker">Build log</div>
-    <h2>Photos from the build</h2>
-    <p class="lede">Real work on a real truck, in a real driveway. Click any photo to open it.</p>
+    <div class="sec-head">
+      <span class="sec-no">SEC. 03</span>
+      <h2>Plates</h2>
+      <span class="fill"></span>
+    </div>
+    <p class="lede">Photographs from the build.</p>
+
     <div class="gallery">
       <figure>
-        <div class="photo" data-ph="img/motor.jpg"><img src="img/motor.jpg" alt="NetGain Hyper9 motor bolted to the transmission adapter plate"></div>
-        <figcaption>Hyper9 motor mated to the original bellhousing with a CanEV adapter plate.</figcaption>
+        <div class="frame" data-ph="FIG. 01 — img/motor.jpg"><img src="img/motor.jpg" alt="NetGain Hyper9 motor bolted to the transmission adapter plate"></div>
+        <figcaption><span class="fig-no">FIG. 01</span> &mdash; Hyper9 mated to the original bellhousing with a CanEV adapter plate.</figcaption>
       </figure>
       <figure>
-        <div class="photo" data-ph="img/drivetrain.jpg"><img src="img/drivetrain.jpg" alt="Electric motor and inverter being lowered into the engine bay"></div>
-        <figcaption>Motor and X1 inverter going into the bay.</figcaption>
+        <div class="frame" data-ph="FIG. 02 — img/drivetrain.jpg"><img src="img/drivetrain.jpg" alt="Electric motor and inverter being lowered into the engine bay"></div>
+        <figcaption><span class="fig-no">FIG. 02</span> &mdash; Motor and X1 inverter going into the bay.</figcaption>
       </figure>
       <figure>
-        <div class="photo" data-ph="img/bay.jpg"><img src="img/bay.jpg" alt="Engine bay with high voltage components mounted"></div>
-        <figcaption>HV hardware living where the engine used to.</figcaption>
+        <div class="frame" data-ph="FIG. 03 — img/bay.jpg"><img src="img/bay.jpg" alt="Engine bay with high voltage components mounted"></div>
+        <figcaption><span class="fig-no">FIG. 03</span> &mdash; HV hardware living where the engine used to.</figcaption>
       </figure>
       <figure>
-        <div class="photo" data-ph="img/selector.jpg"><img src="img/selector.jpg" alt="Rotary drive selector knob installed in the dashboard"></div>
-        <figcaption>R / N / D. Drive selector wired into the dash.</figcaption>
+        <div class="frame" data-ph="FIG. 04 — img/selector.jpg"><img src="img/selector.jpg" alt="Rotary drive selector knob installed in the dashboard"></div>
+        <figcaption><span class="fig-no">FIG. 04</span> &mdash; R / N / D. Drive selector wired into the dash.</figcaption>
       </figure>
       <figure>
-        <div class="photo" data-ph="img/underneath.jpg"><img src="img/underneath.jpg" alt="Working underneath the truck"></div>
-        <figcaption>Most of a conversion is time spent under the truck.</figcaption>
+        <div class="frame" data-ph="FIG. 05 — img/underneath.jpg"><img src="img/underneath.jpg" alt="Working underneath the truck"></div>
+        <figcaption><span class="fig-no">FIG. 05</span> &mdash; Most of a conversion is time spent under the truck.</figcaption>
       </figure>
       <figure>
-        <div class="photo" data-ph="img/dogs.jpg"><img src="img/dogs.jpg" alt="Two dogs sitting in the cab of the truck"></div>
-        <figcaption>Shop supervisors. Tape deck stays.</figcaption>
-      </figure>
-      <figure>
-        <div class="photo" data-ph="img/founder.jpg"><img src="img/founder.jpg" alt="The truck outside with a dog in the cab"></div>
-        <figcaption>Still a truck. Still gets used like one.</figcaption>
+        <div class="frame" data-ph="FIG. 06 — img/dogs.jpg"><img src="img/dogs.jpg" alt="Two dogs sitting in the cab of the truck"></div>
+        <figcaption><span class="fig-no">FIG. 06</span> &mdash; Shop supervisors. Tape deck stays.</figcaption>
       </figure>
     </div>
   </div>
@@ -372,112 +367,140 @@
 
 <section id="process">
   <div class="wrap">
-    <div class="kicker">How it goes</div>
-    <h2>From "I have an idea" to plugged in</h2>
-    <div class="steps">
-      <div class="step"><b>1. Conversation</b><span>What the vehicle is, how far you drive it, what you want out of it.</span></div>
-      <div class="step"><b>2. Spec and quote</b><span>Motor, pack size, range target, and a real parts list with real numbers.</span></div>
-      <div class="step"><b>3. Build</b><span>Teardown, drivetrain, pack, HV, charging, 12V, dash. Photos as we go.</span></div>
-      <div class="step"><b>4. Shakedown</b><span>Commissioning, road testing, and a walkthrough of how to live with it.</span></div>
+    <div class="sec-head">
+      <span class="sec-no">SEC. 04</span>
+      <h2>Process</h2>
+      <span class="fill"></span>
+    </div>
+
+    <div class="rows">
+      <div class="row">
+        <div class="row-no">4.1</div>
+        <div><h3>Conversation</h3></div>
+        <div class="row-detail"><p>What the vehicle is, how far you drive it, what you want out of it.</p></div>
+      </div>
+      <div class="row">
+        <div class="row-no">4.2</div>
+        <div><h3>Spec and quote</h3></div>
+        <div class="row-detail"><p>Motor, pack size, range target, and a real parts list with real numbers.</p></div>
+      </div>
+      <div class="row">
+        <div class="row-no">4.3</div>
+        <div><h3>Build</h3></div>
+        <div class="row-detail"><p>Teardown, drivetrain, pack, HV, charging, 12V, dash. Photos as we go.</p></div>
+      </div>
+      <div class="row">
+        <div class="row-no">4.4</div>
+        <div><h3>Shakedown</h3></div>
+        <div class="row-detail"><p>Commissioning, road testing, and a walkthrough of how to live with it.</p></div>
+      </div>
     </div>
   </div>
 </section>
 
 <section id="faq">
   <div class="wrap">
-    <div class="kicker">Questions</div>
-    <h2>The ones everybody asks</h2>
+    <div class="sec-head">
+      <span class="sec-no">SEC. 05</span>
+      <h2>Questions</h2>
+      <span class="fill"></span>
+    </div>
 
-    <details open>
-      <summary>What does a conversion cost?</summary>
-      <p>There's no single number, because a conversion is a pile of separate line items and
-        every vehicle moves them around:</p>
-      <ul>
-        <li><b>Battery pack</b> — usually the biggest one, and it scales directly with the
-          range you want. New vs. salvage modules is a large fork in the road.</li>
-        <li><b>Motor and inverter</b> — sized to the vehicle and how you plan to drive it.</li>
-        <li><b>Labor to strip the ICE out</b> — engine, exhaust, fuel system, radiator. On a
-          rusty New England truck this takes longer than people expect.</li>
-        <li><b>Transmission</b> — if it's a manual, you usually keep it and adapt to the
-          existing bellhousing, which is the cheap path. An automatic typically means swapping
-          in a manual or going direct-drive, and that's real added cost.</li>
-        <li><b>Everything the engine used to run</b> — power steering, vacuum brakes, heat, AC.
-          Each one needs an electric replacement or it goes away.</li>
-        <li><b>Charging</b> — onboard charger, charge port, and the HV wiring to support it.</li>
-        <li><b>Fabrication</b> — motor mounts, battery boxes, and brackets are vehicle-specific
-          and almost never off the shelf.</li>
-      </ul>
-      <p>Tell us the vehicle, whether it's a manual, and how far you need to go, and we'll put
-        a real quote together instead of guessing here.</p>
-    </details>
+    <div class="faq">
+      <details open>
+        <summary><span class="q">5.1</span><span>What does a conversion cost?</span></summary>
+        <div class="answer">
+          <p>There's no single number, because a conversion is a pile of separate line items and
+            every vehicle moves them around:</p>
+          <ul>
+            <li><b>Battery pack</b> — usually the biggest one, and it scales directly with the
+              range you want. New vs. salvage modules is a large fork in the road.</li>
+            <li><b>Motor and inverter</b> — sized to the vehicle and how you plan to drive it.</li>
+            <li><b>Labor to strip the ICE out</b> — engine, exhaust, fuel system, radiator. On a
+              rusty New England truck this takes longer than people expect.</li>
+            <li><b>Transmission</b> — if it's a manual, you usually keep it and adapt to the
+              existing bellhousing, which is the cheap path. An automatic typically means swapping
+              in a manual or going direct-drive, and that's real added cost.</li>
+            <li><b>Everything the engine used to run</b> — power steering, vacuum brakes, heat, AC.
+              Each one needs an electric replacement or it goes away.</li>
+            <li><b>Charging</b> — onboard charger, charge port, and the HV wiring to support it.</li>
+            <li><b>Fabrication</b> — motor mounts, battery boxes, and brackets are vehicle-specific
+              and almost never off the shelf.</li>
+          </ul>
+          <p>Tell us the vehicle, whether it's a manual, and how far you need to go, and we'll put
+            a real quote together instead of guessing here.</p>
+        </div>
+      </details>
 
-    <details>
-      <summary>What vehicles work best?</summary>
-      <p>Light, simple, and mechanically sound. Older pickups and small trucks are ideal —
-        room for the pack, straightforward wiring, and no computer to fight with. Newer
-        vehicles with heavy electronics integration are harder and cost more.</p>
-    </details>
+      <details>
+        <summary><span class="q">5.2</span><span>What vehicles work best?</span></summary>
+        <div class="answer">
+          <p>Light, simple, and mechanically sound. Older pickups and small trucks are ideal —
+            room for the pack, straightforward wiring, and no computer to fight with. Newer
+            vehicles with heavy electronics integration are harder and cost more.</p>
+        </div>
+      </details>
 
-    <details>
-      <summary>How much range will I get?</summary>
-      <p>It's a function of pack size, vehicle weight, and aero. We'll estimate it for your
-        specific vehicle during the spec step rather than promising a number up front.</p>
-    </details>
+      <details>
+        <summary><span class="q">5.3</span><span>How much range will I get?</span></summary>
+        <div class="answer">
+          <p>It's a function of pack size, vehicle weight, and aero. We'll estimate it for your
+            specific vehicle during the spec step rather than promising a number up front.</p>
+        </div>
+      </details>
 
-    <details>
-      <summary>Can I keep my manual transmission?</summary>
-      <p>Usually yes, and it's often the simplest path — the motor mates to the existing
-        bellhousing and you keep the gearbox. Most conversions end up driving in one or two
-        gears once you get used to the torque.</p>
-    </details>
+      <details>
+        <summary><span class="q">5.4</span><span>Can I keep my manual transmission?</span></summary>
+        <div class="answer">
+          <p>Usually yes, and it's often the simplest path — the motor mates to the existing
+            bellhousing and you keep the gearbox. Most conversions end up driving in one or two
+            gears once you get used to the torque.</p>
+        </div>
+      </details>
 
-    <details>
-      <summary>Do you do inspection and registration paperwork?</summary>
-      <p>We can walk you through what Rhode Island requires for a converted vehicle. We're not
-        an authority on it — we'll tell you what we know and point you at the DMV for anything
-        we're not sure of.</p>
-    </details>
+      <details>
+        <summary><span class="q">5.5</span><span>Do you do inspection and registration paperwork?</span></summary>
+        <div class="answer">
+          <p>We can walk you through what Rhode Island requires for a converted vehicle. We're not
+            an authority on it — we'll tell you what we know and point you at the DMV for anything
+            we're not sure of.</p>
+        </div>
+      </details>
 
-    <details>
-      <summary>Where are you located?</summary>
-      <p>Rhode Island. Full conversions are local — southern New England, roughly.
-        Consulting can happen anywhere.</p>
-    </details>
+      <details>
+        <summary><span class="q">5.6</span><span>Where are you located?</span></summary>
+        <div class="answer">
+          <p>Rhode Island. Full conversions are local — southern New England, roughly.
+            Consulting can happen anywhere.</p>
+        </div>
+      </details>
+    </div>
   </div>
 </section>
 
 <section id="contact">
-  <div class="wrap contact-box">
-    <div class="kicker">Get in touch</div>
-    <h2>Tell us about the vehicle</h2>
-    <p>Year, make, model, and what you want to do with it. That's enough to start.
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">SEC. 06</span>
+      <h2>Contact</h2>
+      <span class="fill"></span>
+    </div>
+    <p class="lede">Year, make, model, and what you want to do with it. That's enough to start.
       We read everything and reply personally.</p>
-    <p style="margin:26px 0 0">
-      <a class="mailbtn" href="mailto:hello@rievs.com?subject=EV%20conversion%20inquiry">hello@rievs.com</a>
-    </p>
+    <div class="mailplate">
+      <span class="stamp">Inquiries</span>
+      <a href="mailto:hello@rievs.com?subject=EV%20conversion%20inquiry">hello@rievs.com</a>
+    </div>
   </div>
 </section>
 
-<div class="wrap">
-  <footer>
+<footer>
+  <div class="wrap">
     <span>Rhode Island Electric Vehicle Conversions</span>
-    <span class="mono">Rhode Island</span>
-  </footer>
-</div>
+    <span>Rievs.com</span>
+  </div>
+</footer>
 
-<script>
-  // any photo whose image is missing falls back to its dashed placeholder
-  var heroBg = document.querySelector('.hero-bg img');
-  if(heroBg){ heroBg.addEventListener('error', function(){ heroBg.remove(); }); }
-  document.querySelectorAll('.photo img').forEach(function(img){
-    var box = img.parentElement;
-    img.addEventListener('load', function(){ box.classList.add('filled'); });
-    img.addEventListener('error', function(){
-      img.remove();
-      box.textContent = '[ ' + (box.dataset.ph || 'photo') + ' ]';
-    });
-  });
-</script>
 <div class="lightbox" id="lightbox">
   <button class="lb-close" aria-label="Close">&times;</button>
   <figure>
@@ -485,7 +508,29 @@
     <figcaption id="lb-cap"></figcaption>
   </figure>
 </div>
+
 <script>
+  // Masthead: prefer the finished-truck photo, fall back until one loads.
+  (function(){
+    var m = document.getElementById('masthead-img');
+    if(!m) return;
+    m.addEventListener('error', function(){
+      var fb = m.dataset.fallback;
+      if(fb){ m.dataset.fallback = ''; m.src = fb; }
+      else { m.remove(); }
+    });
+  })();
+
+  // Any figure whose image is missing shows its plate number instead.
+  document.querySelectorAll('.frame img').forEach(function(img){
+    img.addEventListener('error', function(){
+      var box = img.parentElement;
+      img.remove();
+      box.textContent = box.dataset.ph || 'PLATE MISSING';
+    });
+  });
+
+  // Lightbox
   (function(){
     var lb = document.getElementById('lightbox'),
         lbImg = document.getElementById('lb-img'),
@@ -493,7 +538,7 @@
     document.querySelectorAll('.gallery figure').forEach(function(fig){
       fig.addEventListener('click', function(){
         var img = fig.querySelector('img');
-        if(!img) return;                      // placeholder, nothing to open
+        if(!img) return;
         lbImg.src = img.src; lbImg.alt = img.alt;
         lbCap.textContent = fig.querySelector('figcaption').textContent;
         lb.classList.add('open');
@@ -505,5 +550,3 @@
     });
   })();
 </script>
-</body>
-</html>
