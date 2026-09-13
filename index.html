@@ -70,8 +70,21 @@
     color:#5c636d; font-size:13px; padding:20px; overflow:hidden}
   .photo img{width:100%; height:100%; object-fit:cover; display:block}
   .photo.filled{border-style:solid; padding:0}
-  .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:12px}
-  .gallery .photo{aspect-ratio:1/1; font-size:12px}
+  .hero-shot{aspect-ratio:3/4}
+  .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+  @media(max-width:860px){ .gallery{grid-template-columns:1fr 1fr} }
+  @media(max-width:520px){ .gallery{grid-template-columns:1fr} }
+  .gallery figure{cursor:zoom-in}
+  .gallery .photo{aspect-ratio:4/3; font-size:12px; transition:border-color .15s}
+  .gallery figure:hover .photo{border-color:var(--hv)}
+  .lightbox{position:fixed; inset:0; z-index:50; background:rgba(8,9,10,.94);
+    display:none; align-items:center; justify-content:center; padding:24px; cursor:zoom-out}
+  .lightbox.open{display:flex}
+  .lightbox img{max-width:100%; max-height:82vh; border-radius:8px; display:block}
+  .lightbox figcaption{text-align:center; color:var(--muted); margin-top:14px; font-size:14px}
+  .lb-close{position:absolute; top:16px; right:22px; color:var(--muted); font-size:30px;
+    background:none; border:none; cursor:pointer; line-height:1}
+  .lb-close:hover{color:var(--text)}
   figure{margin:0}
   figcaption{color:var(--muted); font-size:13px; margin-top:8px}
   .specs{width:100%; border-collapse:collapse; font-size:14.5px}
@@ -124,6 +137,7 @@
       <ul>
         <li><a href="#services">Services</a></li>
         <li><a href="#build">The Ranger</a></li>
+        <li><a href="#gallery">Photos</a></li>
         <li><a href="#process">Process</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -204,13 +218,11 @@
     <div class="build-grid">
       <div>
         <figure>
-          <div class="photo" data-ph="drop img/ranger-hero.jpg in the repo">
-            <img src="img/ranger-hero.jpg" alt="The 1986 Ford Ranger EV conversion">
+          <div class="photo hero-shot" data-ph="img/ranger-hero.jpg">
+            <img src="img/ranger-hero.jpg" alt="The gas engine pulled out of the Ranger on an engine hoist">
           </div>
-          <figcaption>The truck, mid-build.</figcaption>
+          <figcaption>The engine coming out. Everything after this is new.</figcaption>
         </figure>
-        <div class="gallery">
-          <div class="photo" data-ph="img/pack.jpg"><img src="img/pack.jpg" alt="Battery pack and modules"></div>
           <div class="photo" data-ph="img/motor.jpg"><img src="img/motor.jpg" alt="Hyper9 motor and X1 inverter"></div>
           <div class="photo" data-ph="img/dash.jpg"><img src="img/dash.jpg" alt="CAN dashboard"></div>
         </div>
@@ -237,6 +249,44 @@
           <a href="https://github.com/wstewarttennes/ranger-dashboard">GitHub</a>.
         </p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="kicker">Build log</div>
+    <h2>Photos from the build</h2>
+    <p class="lede">Real work on a real truck, in a real driveway. Click any photo to open it.</p>
+    <div class="gallery">
+      <figure>
+        <div class="photo" data-ph="img/motor.jpg"><img src="img/motor.jpg" alt="NetGain Hyper9 motor bolted to the transmission adapter plate"></div>
+        <figcaption>Hyper9 motor mated to the original bellhousing with a CanEV adapter plate.</figcaption>
+      </figure>
+      <figure>
+        <div class="photo" data-ph="img/drivetrain.jpg"><img src="img/drivetrain.jpg" alt="Electric motor and inverter being lowered into the engine bay"></div>
+        <figcaption>Motor and X1 inverter going into the bay.</figcaption>
+      </figure>
+      <figure>
+        <div class="photo" data-ph="img/bay.jpg"><img src="img/bay.jpg" alt="Engine bay with high voltage components mounted"></div>
+        <figcaption>HV hardware living where the engine used to.</figcaption>
+      </figure>
+      <figure>
+        <div class="photo" data-ph="img/selector.jpg"><img src="img/selector.jpg" alt="Rotary drive selector knob installed in the dashboard"></div>
+        <figcaption>R / N / D. Drive selector wired into the dash.</figcaption>
+      </figure>
+      <figure>
+        <div class="photo" data-ph="img/underneath.jpg"><img src="img/underneath.jpg" alt="Working underneath the truck"></div>
+        <figcaption>Most of a conversion is time spent under the truck.</figcaption>
+      </figure>
+      <figure>
+        <div class="photo" data-ph="img/dogs.jpg"><img src="img/dogs.jpg" alt="Two dogs sitting in the cab of the truck"></div>
+        <figcaption>Shop supervisors. Tape deck stays.</figcaption>
+      </figure>
+      <figure>
+        <div class="photo" data-ph="img/founder.jpg"><img src="img/founder.jpg" alt="The truck outside with a dog in the cab"></div>
+        <figcaption>Still a truck. Still gets used like one.</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -346,6 +396,33 @@
       box.textContent = '[ ' + (box.dataset.ph || 'photo') + ' ]';
     });
   });
+</script>
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" aria-label="Close">&times;</button>
+  <figure>
+    <img id="lb-img" src="" alt="">
+    <figcaption id="lb-cap"></figcaption>
+  </figure>
+</div>
+<script>
+  (function(){
+    var lb = document.getElementById('lightbox'),
+        lbImg = document.getElementById('lb-img'),
+        lbCap = document.getElementById('lb-cap');
+    document.querySelectorAll('.gallery figure').forEach(function(fig){
+      fig.addEventListener('click', function(){
+        var img = fig.querySelector('img');
+        if(!img) return;                      // placeholder, nothing to open
+        lbImg.src = img.src; lbImg.alt = img.alt;
+        lbCap.textContent = fig.querySelector('figcaption').textContent;
+        lb.classList.add('open');
+      });
+    });
+    lb.addEventListener('click', function(){ lb.classList.remove('open'); });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') lb.classList.remove('open');
+    });
+  })();
 </script>
 </body>
 </html>
