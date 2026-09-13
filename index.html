@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rhode Island EV Conversions</title>
+<title>Rhode Island Electric Vehicle Conversions</title>
 <meta name="description" content="Gas to electric conversions, build consulting, and parts sourcing. Based in Rhode Island.">
 <style>
   :root{
@@ -25,13 +25,15 @@
 
   /* nav */
   header{position:sticky; top:0; z-index:10; background:rgba(14,15,17,.85); backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
-  nav{display:flex; align-items:center; justify-content:space-between; gap:16px; height:60px}
-  .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:-.01em; text-decoration:none; color:var(--text)}
+  nav{display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:64px; padding:8px 0}
+  .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:-.015em;
+    text-decoration:none; color:var(--text); font-size:15px; line-height:1.15}
+  @media(max-width:420px){ .brand{font-size:13px} }
   .plug{width:22px;height:22px;flex:none}
   nav ul{display:flex; gap:22px; list-style:none; margin:0; padding:0}
   nav a{color:var(--muted); text-decoration:none; font-size:14px}
   nav a:hover{color:var(--text)}
-  @media(max-width:720px){ nav ul{display:none} }
+  @media(max-width:1040px){ nav ul{display:none} }
 
   /* hero */
   .hero{padding:76px 0 64px; border-bottom:1px solid var(--line);
@@ -132,7 +134,7 @@
         <svg class="plug" viewBox="0 0 24 24" fill="none" stroke="#ff6b1a" stroke-width="2" stroke-linecap="round">
           <path d="M8 2v6M16 2v6M6 8h12v3a6 6 0 0 1-6 6 6 6 0 0 1-6-6V8zM12 17v5"/>
         </svg>
-        RI EV Conversions
+        <span>Rhode Island Electric Vehicle Conversions</span>
       </a>
       <ul>
         <li><a href="#services">Services</a></li>
@@ -223,9 +225,6 @@
           </div>
           <figcaption>The engine coming out. Everything after this is new.</figcaption>
         </figure>
-          <div class="photo" data-ph="img/motor.jpg"><img src="img/motor.jpg" alt="Hyper9 motor and X1 inverter"></div>
-          <div class="photo" data-ph="img/dash.jpg"><img src="img/dash.jpg" alt="CAN dashboard"></div>
-        </div>
         <div class="status">
           <strong>Build status:</strong> HV pack and BMS commissioned, inverter bench-tested,
           charging path wired. Currently working through the HV-side wiring and first drive.
@@ -374,14 +373,14 @@
     <p>Year, make, model, and what you want to do with it. That's enough to start.
       We read everything and reply personally.</p>
     <p style="margin:26px 0 0">
-      <a class="mailbtn" href="mailto:REPLACE@EXAMPLE.COM?subject=EV%20conversion%20inquiry">REPLACE@EXAMPLE.COM</a>
+      <a class="mailbtn" href="mailto:hello@rievs.com?subject=EV%20conversion%20inquiry">hello@rievs.com</a>
     </p>
   </div>
 </section>
 
 <div class="wrap">
   <footer>
-    <span>Rhode Island EV Conversions</span>
+    <span>Rhode Island Electric Vehicle Conversions</span>
     <span class="mono">Built in Rhode Island</span>
   </footer>
 </div>
