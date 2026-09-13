@@ -90,6 +90,9 @@
   summary::after{content:"+"; float:right; color:var(--hv); font-weight:400}
   details[open] summary::after{content:"–"}
   details p{color:var(--muted); margin:12px 0 0; max-width:66ch; font-size:15px}
+  details ul{color:var(--muted); font-size:15px; max-width:66ch; margin:12px 0 0; padding-left:20px}
+  details li{margin-bottom:8px}
+  details li b{color:var(--text); font-weight:600}
 
   /* contact */
   #contact{background:var(--panel); border-bottom:none}
@@ -242,10 +245,25 @@
 
     <details open>
       <summary>What does a conversion cost?</summary>
-      <p>It depends almost entirely on the battery pack — that's the biggest single line item
-        and it scales with the range you want. Small commuter builds and long-range builds are
-        very different numbers. Tell us the vehicle and how far you need to go and we'll put a
-        real quote together instead of guessing here.</p>
+      <p>There's no single number, because a conversion is a pile of separate line items and
+        every vehicle moves them around:</p>
+      <ul>
+        <li><b>Battery pack</b> — usually the biggest one, and it scales directly with the
+          range you want. New vs. salvage modules is a large fork in the road.</li>
+        <li><b>Motor and inverter</b> — sized to the vehicle and how you plan to drive it.</li>
+        <li><b>Labor to strip the ICE out</b> — engine, exhaust, fuel system, radiator. On a
+          rusty New England truck this takes longer than people expect.</li>
+        <li><b>Transmission</b> — if it's a manual, you usually keep it and adapt to the
+          existing bellhousing, which is the cheap path. An automatic typically means swapping
+          in a manual or going direct-drive, and that's real added cost.</li>
+        <li><b>Everything the engine used to run</b> — power steering, vacuum brakes, heat, AC.
+          Each one needs an electric replacement or it goes away.</li>
+        <li><b>Charging</b> — onboard charger, charge port, and the HV wiring to support it.</li>
+        <li><b>Fabrication</b> — motor mounts, battery boxes, and brackets are vehicle-specific
+          and almost never off the shelf.</li>
+      </ul>
+      <p>Tell us the vehicle, whether it's a manual, and how far you need to go, and we'll put
+        a real quote together instead of guessing here.</p>
     </details>
 
     <details>
