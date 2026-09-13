@@ -67,7 +67,13 @@
   @media(max-width:860px){ .build-grid{grid-template-columns:1fr; gap:28px} }
   .photo{background:var(--panel); border:1px dashed var(--line); border-radius:12px;
     aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; text-align:center;
-    color:#5c636d; font-size:13px; padding:20px}
+    color:#5c636d; font-size:13px; padding:20px; overflow:hidden}
+  .photo img{width:100%; height:100%; object-fit:cover; display:block}
+  .photo.filled{border-style:solid; padding:0}
+  .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:12px}
+  .gallery .photo{aspect-ratio:1/1; font-size:12px}
+  figure{margin:0}
+  figcaption{color:var(--muted); font-size:13px; margin-top:8px}
   .specs{width:100%; border-collapse:collapse; font-size:14.5px}
   .specs td{padding:11px 0; border-bottom:1px solid var(--line); vertical-align:top}
   .specs td:first-child{color:var(--muted); width:44%; padding-right:16px}
@@ -197,7 +203,17 @@
 
     <div class="build-grid">
       <div>
-        <div class="photo">[ hero photo of the Ranger — swap this out ]</div>
+        <figure>
+          <div class="photo" data-ph="drop img/ranger-hero.jpg in the repo">
+            <img src="img/ranger-hero.jpg" alt="The 1986 Ford Ranger EV conversion">
+          </div>
+          <figcaption>The truck, mid-build.</figcaption>
+        </figure>
+        <div class="gallery">
+          <div class="photo" data-ph="img/pack.jpg"><img src="img/pack.jpg" alt="Battery pack and modules"></div>
+          <div class="photo" data-ph="img/motor.jpg"><img src="img/motor.jpg" alt="Hyper9 motor and X1 inverter"></div>
+          <div class="photo" data-ph="img/dash.jpg"><img src="img/dash.jpg" alt="CAN dashboard"></div>
+        </div>
         <div class="status">
           <strong>Build status:</strong> HV pack and BMS commissioned, inverter bench-tested,
           charging path wired. Currently working through the HV-side wiring and first drive.
@@ -320,5 +336,16 @@
   </footer>
 </div>
 
+<script>
+  // any photo whose image is missing falls back to its dashed placeholder
+  document.querySelectorAll('.photo img').forEach(function(img){
+    var box = img.parentElement;
+    img.addEventListener('load', function(){ box.classList.add('filled'); });
+    img.addEventListener('error', function(){
+      img.remove();
+      box.textContent = '[ ' + (box.dataset.ph || 'photo') + ' ]';
+    });
+  });
+</script>
 </body>
 </html>
