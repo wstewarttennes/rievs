@@ -2,6 +2,19 @@
 
 Marketing site for Rhode Island EV Conversions. Static HTML, no build step.
 
+## Pages
+
+- `/` — homepage
+- `/ford-ranger-ev-conversion/` — Ranger build log
+- `/electric-truck-conversion/`, `/classic-car-ev-conversion/` — guides
+- `/ev-conversion-new-england/` — service area
+- `/ev-conversion-registration/` — RI + nearby state registration notes (sources linked; re-check yearly)
+
+All pages share `assets/site.css`. Header, nav, and footer are repeated in each page, so change them everywhere.
+When adding a page, add it to `sitemap.xml` and the footer nav.
+
+Images: originals in `img/*.jpg`, served as `img/*-800.webp` / `*-1600.webp`. Social share image is `img/og-ranger.jpg`.
+
 ## Local preview
 
 ```

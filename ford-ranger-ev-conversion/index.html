@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1986 Ford Ranger EV Conversion Build Log | Hyper9, Tesla Modules, Thunderstruck BMS</title>
+<meta name="description" content="How we converted a 1986 Ford Ranger to electric: NetGain Hyper9 motor, Hyper-Drive X1 inverter, 36S Tesla module pack, Thunderstruck BMS and charger, manual transmission swap, and a custom CAN dashboard.">
+<link rel="canonical" href="https://rievs.com/ford-ranger-ev-conversion/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Rhode Island Electric Vehicle Conversions">
+<meta property="og:title" content="1986 Ford Ranger EV Conversion Build Log | Hyper9, Tesla Modules, Thunderstruck BMS">
+<meta property="og:description" content="How we converted a 1986 Ford Ranger to electric: NetGain Hyper9 motor, Hyper-Drive X1 inverter, 36S Tesla module pack, Thunderstruck BMS and charger, manual transmission swap, and a custom CAN dashboard.">
+<meta property="og:url" content="https://rievs.com/ford-ranger-ev-conversion/">
+<meta property="og:image" content="https://rievs.com/img/og-ranger.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#16324a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://rievs.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Ford Ranger EV conversion",
+          "item": "https://rievs.com/ford-ranger-ev-conversion/"
+        }
+      ]
+    },
+    {
+      "@type": "TechArticle",
+      "headline": "1986 Ford Ranger EV conversion",
+      "description": "How we converted a 1986 Ford Ranger to electric: NetGain Hyper9 motor, Hyper-Drive X1 inverter, 36S Tesla module pack, Thunderstruck BMS and charger, manual transmission swap, and a custom CAN dashboard.",
+      "image": "https://rievs.com/img/og-ranger.jpg",
+      "mainEntityOfPage": "https://rievs.com/ford-ranger-ev-conversion/",
+      "author": {
+        "@type": "Organization",
+        "name": "Rhode Island Electric Vehicle Conversions",
+        "url": "https://rievs.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Rhode Island Electric Vehicle Conversions",
+        "url": "https://rievs.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://rievs.com/apple-touch-icon.png"
+        }
+      },
+      "dateModified": "2026-09-13"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What motor is in the electric Ford Ranger?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A NetGain Hyper9 HV, driven by a Hyper-Drive AC-X1 120/144V 500A inverter and bolted to the original bellhousing with a CanEV adapter plate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What batteries does the Ranger conversion use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tesla modules configured as 36 cells in series, about 133V nominal, managed by a Thunderstruck MCU BMS."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can a Ford Ranger with an automatic be converted to electric?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Ours came as an automatic. The usual approach, and what we did, is to remove the automatic with the engine and install a manual transmission that the electric motor mates to."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the converted Ranger charge?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Through a J1772 + NACS charge port feeding a Thunderstruck TSM2500 onboard charger, so it works with standard Level 2 chargers."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <span><a href="/" style="color:inherit;text-decoration:none">Rhode Island Electric Vehicle Conversions</a></span>
+    <span class="right">New England &amp; the Northeast &nbsp;&mdash;&nbsp; <a href="tel:+14014143290">(401) 414-3290</a></span>
+  </div>
+</div>
+
+<nav class="navrail" aria-label="Main">
+  <div class="wrap">
+    <a href="/#services">01 &middot; Services</a>
+    <a href="/ford-ranger-ev-conversion/" aria-current="page">02 &middot; The Ranger</a>
+    <a href="/electric-truck-conversion/">03 &middot; Trucks</a>
+    <a href="/classic-car-ev-conversion/">04 &middot; Classic cars</a>
+    <a href="/ev-conversion-new-england/">05 &middot; Service area</a>
+    <a href="/#faq">06 &middot; Questions</a>
+    <a href="/#contact">07 &middot; Contact</a>
+  </div>
+</nav>
+
+<main id="main">
+<header class="pagehead">
+  <div class="wrap">
+    <p class="crumbs"><a href="/">Home</a> &nbsp;/&nbsp; Ford Ranger EV conversion</p>
+    <h1>1986 Ford Ranger EV conversion</h1>
+    <p>The build behind this business: a gas Ranger turned into a daily-driven electric truck in Rhode Island. Parts, wiring decisions, and the mistakes worth avoiding.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap article">
+    <article class="prose">
+      <h2>The truck</h2>
+      <p>A 1986 Ford Ranger: light, simple, body-on-frame, and nothing on it that talks to a computer.
+        That's close to the ideal starting point for an EV conversion. It came as an automatic, which
+        turned into the biggest single decision of the build. Today it's converted, registered in Rhode
+        Island, and driven every day.</p>
+
+      <div class="tablewrap"><table>
+        <tr><th>System</th><th>What's in it</th></tr>
+        <tr><td>Motor</td><td>NetGain Hyper9 HV, on the original bellhousing with a CanEV adapter plate</td></tr>
+        <tr><td>Inverter</td><td>Hyper-Drive AC-X1, 120/144V 500A, liquid cooled</td></tr>
+        <tr><td>Battery</td><td>Tesla modules, 36S &mdash; about 133V nominal, 108V empty to 151V full</td></tr>
+        <tr><td>BMS</td><td>Thunderstruck MCU with two BMSS18 satellite cell monitors</td></tr>
+        <tr><td>Charging</td><td>Thunderstruck TSM2500 onboard charger, J1772 + NACS charge port</td></tr>
+        <tr><td>12V</td><td>Thunderstruck DC-DC, 13.8V / 50A, keeping the 12V battery topped up</td></tr>
+        <tr><td>Transmission</td><td>Manual, swapped in to replace the factory automatic</td></tr>
+        <tr><td>Power steering</td><td>Electro-hydraulic pump from a 2013&ndash;2018 Nissan Altima</td></tr>
+        <tr><td>Dash</td><td>Raspberry Pi CAN dashboard, open source</td></tr>
+      </table></div>
+
+      <figure>
+        <img src="/img/drivetrain-800.webp" srcset="/img/drivetrain-800.webp 800w, /img/drivetrain-1600.webp 1600w" sizes="(max-width:900px) 100vw, 700px"
+             width="1350" height="1800" loading="lazy" alt="Hyper9 electric motor and X1 inverter being lowered into the Ford Ranger's engine bay on a chain hoist">
+        <figcaption>Motor and X1 inverter going into the bay.</figcaption>
+      </figure>
+
+      <h2>Motor and transmission</h2>
+      <p>The Hyper9 bolts to the Ranger's original bellhousing through a CanEV adapter plate, so the
+        clutch and gearbox do their normal job. Because the truck came with an automatic, the automatic
+        came out with the engine and a manual went in its place. It's more work and more money than
+        keeping a factory manual, but it's the well-worn path and it keeps the drivetrain simple.</p>
+      <p>In practice the electric motor's torque means most driving happens in one or two gears.</p>
+
+      <figure>
+        <img src="/img/motor-800.webp" srcset="/img/motor-800.webp 800w, /img/motor-1600.webp 1600w" sizes="(max-width:900px) 100vw, 700px"
+             width="1800" height="1350" loading="lazy" alt="NetGain Hyper9 electric motor bolted to the Ford Ranger transmission with a CanEV adapter plate">
+        <figcaption>Hyper9 on the original bellhousing.</figcaption>
+      </figure>
+
+      <h2>Inverter and cooling</h2>
+      <p>The Hyper-Drive AC-X1 is conduction cooled &mdash; all of its heat leaves through its flat aluminum
+        base. On the Ranger it sits on an Inductive Autoworks cold plate, plumbed into an EV West cooling kit:
+        a 12V pump, a small aluminum radiator with two 120mm fans, and a reservoir, running 50/50 aluminum-safe
+        coolant. The X1 starts derating at 80&deg;C on the heatsink, so the fans are set to come on well
+        before that.</p>
+
+      <h2>Battery pack and BMS</h2>
+      <p>The pack is Tesla modules wired to 36 cells in series, roughly 133V nominal. Every branch off the
+        pack is fused, the main feed goes through a 600A fuse and a contactor, and a precharge relay brings
+        the inverter up gently before the contactor closes. The high-voltage side is fully isolated from the
+        12V system and the chassis.</p>
+      <p>A Thunderstruck MCU runs the BMS with two satellite boards reading all 36 cells, and it doubles as
+        the charge controller &mdash; no separate EVCC.</p>
+      <div class="note"><b>Lesson learned:</b> check every BMS voltage limit against your actual cell
+        chemistry before the pack goes live. Ours had cutoffs set for LFP cells, not the NMC chemistry in
+        Tesla modules, and it threw a high-voltage fault on perfectly healthy cells. Correct limits for the
+        chemistry fixed it.</div>
+
+      <figure>
+        <img src="/img/bay-800.webp" srcset="/img/bay-800.webp 800w, /img/bay-1600.webp 1600w" sizes="(max-width:900px) 100vw, 700px"
+             width="1350" height="1800" loading="lazy" alt="Engine bay of the converted Ford Ranger with high voltage EV components mounted">
+        <figcaption>High-voltage hardware living where the engine used to.</figcaption>
+      </figure>
+
+      <h2>Charging</h2>
+      <p>A Thunderstruck TSM2500 onboard charger feeds the pack from a J1772 + NACS charge port, so the
+        truck plugs into ordinary Level 2 stations and home chargers. The port's pilot and proximity lines
+        go to the MCU, which tells the charger what to do over CAN.</p>
+
+      <h2>Everything the engine used to run</h2>
+      <ul>
+        <li><b>12V power:</b> a DC-DC converter keeps the 12V battery charged whenever the pack is live.</li>
+        <li><b>Power steering:</b> an electro-hydraulic pump from a Nissan Altima replaces the belt-driven pump.
+          It has its own heavy fused feed and was bench-tested before it went in the truck.</li>
+        <li><b>Drive selector:</b> a rotary R / N / D knob in the dash.</li>
+        <li><b>Regen modes:</b> a three-position toggle selects the X1's operating profiles &mdash; coast with no
+          regen, moderate regen, and strong one-pedal regen.</li>
+      </ul>
+
+      <figure>
+        <img src="/img/selector-800.webp" srcset="/img/selector-800.webp 800w, /img/selector-1600.webp 1600w" sizes="(max-width:900px) 100vw, 700px"
+             width="1350" height="1800" loading="lazy" alt="Rotary R N D drive selector knob installed in the dashboard of the electric Ford Ranger">
+        <figcaption>R / N / D, wired into the original dash.</figcaption>
+      </figure>
+
+      <h2>The dashboard</h2>
+      <p>The factory gauges don't know what a battery is, so the Ranger runs a custom dashboard on a Raspberry
+        Pi with a two-channel CAN hat &mdash; one bus for the battery and charger, one for the motor controller.
+        It shows state of charge, pack voltage and current, temperatures, and motor data, and feeds Home
+        Assistant. A small always-on ESP32 can wake the truck remotely and reads the battery bus while it
+        charges, without keeping the Pi running.</p>
+      <p>There's also a read-only openpilot port built from the truck's real CAN signals. Steering control
+        isn't possible without an electric power steering actuator, which this truck doesn't have.</p>
+
+      <h2>What we'd tell anyone starting a conversion</h2>
+      <ol>
+        <li>Start with a manual transmission if you can. Swapping out an automatic is the most avoidable cost.</li>
+        <li>Pick the BMS early and configure it for your real cell chemistry.</li>
+        <li>Fuse every high-voltage branch and keep HV isolated from chassis ground.</li>
+        <li>Plan for the things the engine quietly did for you: power steering, brakes, heat, 12V charging.</li>
+        <li>Document the wiring as you go. The <a href="https://github.com/wstewarttennes/ranger-ev">ranger-ev repo</a>
+          is ours, and it has saved us more than once.</li>
+      </ol>
+
+      <figure>
+        <img src="/img/underneath-800.webp" srcset="/img/underneath-800.webp 800w, /img/underneath-1600.webp 1600w" sizes="(max-width:900px) 100vw, 700px"
+             width="1350" height="1800" loading="lazy" alt="Working underneath the Ford Ranger during the gas to electric conversion">
+        <figcaption>Most of a conversion is time spent under the truck.</figcaption>
+      </figure>
+
+      <h2>Open source</h2>
+      <p>Wiring references, CAN decoding, the dashboard, and the openpilot port are all public:
+        <a href="https://github.com/wstewarttennes/ranger-ev">ranger-ev</a> and
+        <a href="https://github.com/wstewarttennes/ranger-dashboard">ranger-dashboard</a>.
+        If you're doing your own Hyper9 or Thunderstruck build, they're a good place to start &mdash; and
+        we do <a href="/#services">build consulting</a> if you get stuck.</p>
+
+    </article>
+    <aside class="aside" aria-label="Guides">
+      <h2>Conversion guides</h2>
+      <ul>
+        <li><a href="/electric-truck-conversion/">Electric truck conversion</a></li>
+        <li><a href="/classic-car-ev-conversion/">Classic car EV conversion</a></li>
+        <li><a href="/ford-ranger-ev-conversion/" aria-current="page">1986 Ford Ranger build log</a></li>
+        <li><a href="/ev-conversion-new-england/">Service area: New England &amp; the Northeast</a></li>
+        <li><a href="/ev-conversion-registration/">Registering a converted EV</a></li>
+      </ul>
+      <div class="ask">Thinking about converting something? Send the year, make, and model to
+        <a href="mailto:hello@rievs.com?subject=EV%20conversion%20inquiry">hello@rievs.com</a> or call/text <a href="tel:+14014143290">(401) 414-3290</a>.</div>
+    </aside>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">FAQ</span><h2>Common questions</h2><span class="fill"></span></div>
+    <div class="faq">
+      <details>
+        <summary><span class="q">Q1</span><span>What motor is in the electric Ford Ranger?</span></summary>
+        <div class="answer"><p>A NetGain Hyper9 HV, driven by a Hyper-Drive AC-X1 120/144V 500A inverter and bolted to the original bellhousing with a CanEV adapter plate.</p></div>
+      </details>
+      <details>
+        <summary><span class="q">Q2</span><span>What batteries does the Ranger conversion use?</span></summary>
+        <div class="answer"><p>Tesla modules configured as 36 cells in series, about 133V nominal, managed by a Thunderstruck MCU BMS.</p></div>
+      </details>
+      <details>
+        <summary><span class="q">Q3</span><span>Can a Ford Ranger with an automatic be converted to electric?</span></summary>
+        <div class="answer"><p>Yes. Ours came as an automatic. The usual approach, and what we did, is to remove the automatic with the engine and install a manual transmission that the electric motor mates to.</p></div>
+      </details>
+      <details>
+        <summary><span class="q">Q4</span><span>How does the converted Ranger charge?</span></summary>
+        <div class="answer"><p>Through a J1772 + NACS charge port feeding a Thunderstruck TSM2500 onboard charger, so it works with standard Level 2 chargers.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Talk about your vehicle</h2>
+    <p>Year, make, model, and what you want to do with it. That's enough to start. We read everything and reply personally.</p>
+    <a class="btn" href="mailto:hello@rievs.com?subject=EV%20conversion%20inquiry">hello@rievs.com</a>
+    <a class="btn" href="tel:+14014143290" style="border-left:none">Call or text (401) 414-3290</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Rhode Island Electric Vehicle Conversions &mdash; serving New England &amp; the Northeast</span>
+    <nav aria-label="Footer">
+      <a href="/">Home</a>
+      <a href="/electric-truck-conversion/">Truck conversions</a>
+      <a href="/classic-car-ev-conversion/">Classic cars</a>
+      <a href="/ford-ranger-ev-conversion/">Ranger build</a>
+      <a href="/ev-conversion-new-england/">Service area</a>
+      <a href="/ev-conversion-registration/">Registration</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>
